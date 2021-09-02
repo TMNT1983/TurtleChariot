@@ -15,4 +15,11 @@ func TestResolveCidr(t *testing.T) {
 
 	maskIP:=a.GetCidrIpMask(24)
 	fmt.Printf("CIDR 的掩码地址：%v\n",maskIP)
+
+	res:=a.MatchIp("20.26.17.250","20.26.17.0/24")
+	if res{
+		fmt.Println("输入的ip在CIDR里面！")
+	}else {
+		fmt.Println("输入的ip不在CIDR里面！！")
+	}
 }
