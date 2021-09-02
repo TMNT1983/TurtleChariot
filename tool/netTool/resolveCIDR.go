@@ -12,10 +12,10 @@ import (
 
 )
 
-type netIP struct{}
+type NetIP struct{}
 
 //获取CIDR的范围值
-func (n netIP) GetCidrIpRange(cidr string) (string, string){
+func (n NetIP) GetCidrIpRange(cidr string) (string, string){
 	ip := strings.Split(cidr, "/")[0]
 	ipSegs := strings.Split(ip, ".")
 	maskLen, _ := strconv.Atoi(strings.Split(cidr, "/")[1])
@@ -28,7 +28,7 @@ func (n netIP) GetCidrIpRange(cidr string) (string, string){
 }
 
 //获取CIDR地址范围内可拥有的主机数量
-func (n netIP) GetCidrHostNum(maskLen int) uint {
+func (n NetIP) GetCidrHostNum(maskLen int) uint {
 	cidrIpNum := uint(0)
 	var i uint = uint(32 - maskLen - 1)
 	for ; i >= 1; i-- {
@@ -38,7 +38,7 @@ func (n netIP) GetCidrHostNum(maskLen int) uint {
 }
 
 //获取Cidr的掩码
-func(n netIP) GetCidrIpMask(maskLen int) string {
+func(n NetIP) GetCidrIpMask(maskLen int) string {
 	// ^uint32(0)二进制为32个比特1，通过向左位移，得到CIDR掩码的二进制
 	cidrMask := ^uint32(0) << uint(32-maskLen)
 	fmt.Println(fmt.Sprintf("%b \n", cidrMask))

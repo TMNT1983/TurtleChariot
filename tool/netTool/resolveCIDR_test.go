@@ -6,7 +6,7 @@ import (
 )
 
 func TestResolveCidr(t *testing.T) {
-	var a netIP
+	var a NetIP
 	minIP,maxIP:=a.GetCidrIpRange("20.26.17.0/24")
 	fmt.Printf("最小IP地址：%v , 最大IP地址：%v \n",minIP,maxIP)
 
